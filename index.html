@@ -1,0 +1,33 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="rollups/aes.js"></script>
+<script>
+	window.onload = function(){
+		
+		$('#1').html(
+			aes_descrypt('Bs/+hAUFZfpUzE8v97S3Wnf9VayVkMQnk+V1vldVvvk=') +'<br>'+
+			aes_descrypt('jp87rrYW5OrEBwNkDIP1IXz+WcNxM9rlHepdfS/RulseUlPQDDkGW5ecI2ubg88z') +'<br>'+
+			aes_descrypt('YVxeMIawp3Leke9G1Y+GXA==') +'<br>'
+
+			);
+		
+	}
+
+	function aes_enscrypt(message){
+		var key = "fjk393shs323fh2j", iv  = "zxcmjasdhksahd33";
+		key = CryptoJS.enc.Utf8.parse(key);
+		iv = CryptoJS.enc.Utf8.parse(iv);
+		cipherData = CryptoJS.AES.encrypt(message, key, { iv: iv});
+		return cipherData.toString()
+	}
+
+
+	function aes_descrypt(cipherData){
+		var key = "fjk393shs323fh2j", iv  = "zxcmjasdhksahd33";
+		key = CryptoJS.enc.Utf8.parse(key);
+		iv = CryptoJS.enc.Utf8.parse(iv);
+		descrypted = CryptoJS.AES.decrypt(cipherData, key, { iv: iv});
+		return descrypted.toString(CryptoJS.enc.Utf8);
+	}
+</script>
+<div id="1"></div>
+<div id="2"></div>
